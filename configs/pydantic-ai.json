@@ -1,0 +1,17 @@
+{
+  "name": "pydantic-ai",
+  "description": "Pydantic AI framework for building type-safe AI applications with Python models and structured data validation",
+  "base_url": "https://ai.pydantic.dev/llms-full.txt",
+  "selectors": {
+    "main_content": "article",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": [],
+    "exclude": []
+  },
+  "categories": {},
+  "rate_limit": 0.5,
+  "max_pages": 100
+}
