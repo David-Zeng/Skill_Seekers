@@ -1,0 +1,22 @@
+{
+  "name": "deepagents",
+  "description": "Use this skill for building agents with deepagents library - planning, subagents, file systems, and long-term memory capabilities",
+  "base_url": "https://docs.langchain.com/oss/python/deepagents/",
+  "selectors": {
+    "main_content": "main",
+    "title": "title",
+    "code_blocks": "pre"
+  },
+  "url_patterns": {
+    "include": ["/oss/python/deepagents/"],
+    "exclude": ["?utm_", "#", "/edit", "/reference/langsmith/", "/langsmith/"]
+  },
+  "categories": {
+    "getting_started": ["overview", "quickstart", "introduction", "getting-started"],
+    "core_features": ["subagents", "human-in-the-loop", "long-term-memory", "middleware", "backends", "harness"],
+    "customization": ["customization", "configuration", "advanced"],
+    "api_reference": ["reference", "api", "class", "method", "function"]
+  },
+  "rate_limit": 0.5,
+  "max_pages": 50
+}
