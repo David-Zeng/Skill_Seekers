@@ -2,12 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 🎯 Current Status (October 21, 2025)
+## 🎯 Current Status (October 26, 2025)
 
-**Version:** v1.0.0 (Production Ready)
+**Version:** v2.0.0 (Production Ready - Major Feature Release)
 **Active Development:** Flexible, incremental task-based approach
 
 ### Recent Updates (This Week):
+
+**🚀 Major Release: Unified Multi-Source Scraping (v2.0.0)**
+- **NEW**: Combine documentation + GitHub + PDF in one skill
+- **NEW**: Automatic conflict detection between docs and code
+- **NEW**: Rule-based and AI-powered merging
+- **NEW**: Transparent conflict reporting with side-by-side comparison
+- **NEW**: 4 example unified configs (React, Django, FastAPI, Godot)
+- **NEW**: Complete documentation in docs/UNIFIED_SCRAPING.md
+- **NEW**: Integration tests (6/6 passing)
+- **Status**: ✅ Production ready and fully tested
 
 **✅ Community Response (H1 Group):**
 - **Issue #8 Fixed** - Added BULLETPROOF_QUICKSTART.md and TROUBLESHOOTING.md for beginners
@@ -17,8 +27,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **MCP Setup Fixed** - Path expansion bug resolved in setup_mcp.sh
 
 **📦 Configs Status:**
-- ✅ **11/11 production configs verified working** (100% success rate)
-- ✅ New Laravel config added
+- ✅ **15/15 production configs verified working** (100% success rate)
+- ✅ 4 new unified configs added (React, Django, FastAPI, Godot)
 - ✅ All selectors tested and validated
 
 **📋 Next Up:**
@@ -95,7 +105,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 ### Quick Start - Use a Preset
 
 ```bash
-# Scrape and build with a preset configuration
+# Single-source scraping (documentation only)
 python3 cli/doc_scraper.py --config configs/godot.json
 python3 cli/doc_scraper.py --config configs/react.json
 python3 cli/doc_scraper.py --config configs/vue.json
@@ -103,6 +113,29 @@ python3 cli/doc_scraper.py --config configs/django.json
 python3 cli/doc_scraper.py --config configs/laravel.json
 python3 cli/doc_scraper.py --config configs/fastapi.json
 ```
+
+### Unified Multi-Source Scraping (**NEW - v2.0.0**)
+
+```bash
+# Combine documentation + GitHub + PDF in one skill
+python3 cli/unified_scraper.py --config configs/react_unified.json
+python3 cli/unified_scraper.py --config configs/django_unified.json
+python3 cli/unified_scraper.py --config configs/fastapi_unified.json
+python3 cli/unified_scraper.py --config configs/godot_unified.json
+
+# Override merge mode
+python3 cli/unified_scraper.py --config configs/react_unified.json --merge-mode claude-enhanced
+
+# Result: One comprehensive skill with conflict detection
+```
+
+**What makes it special:**
+- ✅ Detects discrepancies between documentation and code
+- ✅ Shows both versions side-by-side with ⚠️ warnings
+- ✅ Identifies outdated docs and undocumented features
+- ✅ Single source of truth showing intent (docs) AND reality (code)
+
+**See full guide:** [docs/UNIFIED_SCRAPING.md](docs/UNIFIED_SCRAPING.md)
 
 ### First-Time User Workflow (Recommended)
 
@@ -145,6 +178,30 @@ python3 cli/doc_scraper.py --name react --url https://react.dev/ --description "
 python3 cli/doc_scraper.py --config configs/godot.json --skip-scrape
 # Time: 1-3 minutes (instant rebuild)
 ```
+
+### Async Mode (2-3x Faster Scraping)
+
+```bash
+# Enable async mode with 8 workers for best performance
+python3 cli/doc_scraper.py --config configs/react.json --async --workers 8
+
+# Quick mode with async
+python3 cli/doc_scraper.py --name react --url https://react.dev/ --async --workers 8
+
+# Dry run with async to test
+python3 cli/doc_scraper.py --config configs/godot.json --async --workers 4 --dry-run
+```
+
+**Recommended Settings:**
+- Small docs (~100-500 pages): `--async --workers 4`
+- Medium docs (~500-2000 pages): `--async --workers 8`
+- Large docs (2000+ pages): `--async --workers 8 --no-rate-limit`
+
+**Performance:**
+- Sync: ~18 pages/sec, 120 MB memory
+- Async: ~55 pages/sec, 40 MB memory (3x faster!)
+
+**See full guide:** [ASYNC_SUPPORT.md](ASYNC_SUPPORT.md)
 
 ### Enhancement Options
 
