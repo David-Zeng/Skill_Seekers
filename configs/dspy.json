@@ -1,0 +1,23 @@
+{
+  "name": "dspy",
+  "description": "DSPy - A framework for programming\u2014not prompting\u2014language models. Use for systematic LM prompting, chain composition, and automatic optimization.",
+  "base_url": "https://dspy.ai/",
+  "selectors": {
+    "main_content": "main, article, div.content, div[role='main']",
+    "title": "h1",
+    "code_blocks": "pre code"
+  },
+  "url_patterns": {
+    "include": ["/learn/", "/tutorials/", "/api/"],
+    "exclude": ["#", "?", "/tags/", "/category/", "/search"]
+  },
+  "categories": {
+    "getting_started": ["introduction", "overview", "installation", "quickstart", "getting started"],
+    "tutorials": ["tutorial", "example", "walkthrough", "step", "guide"],
+    "api_reference": ["api", "reference", "module", "class", "function", "method"],
+    "concepts": ["concept", "theory", "architecture", "design", "principle"],
+    "examples": ["example", "demo", "showcase", "case study"]
+  },
+  "rate_limit": 0.5,
+  "max_pages": 300
+}
